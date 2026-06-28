@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBD Group — Branding Roadmap</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #C0150F;
+  --red-deep: #8B0D09;
+  --red-light: #E8201A;
+  --red-glow: rgba(192,21,15,0.15);
+  --white: #ffffff;
+  --off: #fafafa;
+  --gray: #f2f2f2;
+  --dark: #1a0a09;
+  --text: #1a1a1a;
+  --text2: #555;
+  --text3: #999;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Vazirmatn', system-ui, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  background: var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 40px 24px;
+}
+
+/* animated background circles */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  animation: pulse 6s ease-in-out infinite;
+}
+.circle:nth-child(1) { width: 600px; height: 600px; top: -150px; right: -150px; animation-delay: 0s; }
+.circle:nth-child(2) { width: 400px; height: 400px; bottom: -100px; left: -80px; animation-delay: 2s; }
+.circle:nth-child(3) { width: 250px; height: 250px; top: 40%; left: 10%; animation-delay: 4s; }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.12); opacity: 0.6; }
+}
+
+/* floating particles */
+.particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  animation: float linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-logo {
+  font-size: clamp(72px, 18vw, 160px);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -.04em;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  animation: heroIn 1.2s cubic-bezier(.16,1,.3,1) both;
+  text-align: center;
+}
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(40px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-tagline {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: rgba(255,255,255,0.7);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+  animation: heroIn 1.2s cubic-bezier(.16,1,.3,1) .3s both;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  z-index: 1;
+  animation: heroIn 1s ease 1.2s both;
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.6);
+  animation: scrollDown 1.8s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-logo {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: -.02em;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--red); }
+
+/* ─── INTRO SECTION ─── */
+#intro {
+  padding: 100px 24px;
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro-label {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--red);
+  border: 1.5px solid var(--red);
+  border-radius: 50px;
+  padding: 4px 16px;
+  margin-bottom: 32px;
+}
+.intro-title {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+.intro-title span { color: var(--red); }
+.intro-body {
+  font-size: 17px;
+  color: var(--text2);
+  line-height: 1.9;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ─── ROADMAP SECTION ─── */
+#roadmap {
+  padding: 80px 24px;
+  background: var(--gray);
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  color: var(--text);
+}
+
+.timeline-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* vertical line */
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  right: 28px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--red), rgba(192,21,15,.1));
+}
+
+.phase-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.phase-dot {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2.5px solid var(--red);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900;
+  color: var(--red);
+  flex-shrink: 0;
+  position: relative; z-index: 1;
+  cursor: pointer;
+  transition: background .25s, color .25s, transform .2s;
+  box-shadow: 0 0 0 6px var(--gray);
+}
+.phase-dot:hover, .phase-item.open .phase-dot {
+  background: var(--red);
+  color: var(--white);
+  transform: scale(1.08);
+}
+
+.phase-card {
+  flex: 1;
+  background: var(--white);
+  border-radius: 16px;
+  border: 1.5px solid transparent;
+  overflow: hidden;
+  transition: border-color .25s, box-shadow .25s;
+  cursor: pointer;
+}
+.phase-card:hover { border-color: rgba(192,21,15,.2); box-shadow: 0 8px 40px rgba(192,21,15,.08); }
+.phase-item.open .phase-card { border-color: var(--red); box-shadow: 0 8px 40px rgba(192,21,15,.12); }
+
+.phase-head {
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.phase-tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+.phase-title {
+  font-size: 17px; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.phase-time {
+  font-size: 12px; color: var(--text3);
+  margin-bottom: 8px;
+}
+.phase-goal {
+  font-size: 13px; color: var(--text2);
+  line-height: 1.65;
+}
+
+.phase-chevron {
+  width: 24px; height: 24px;
+  color: var(--text3);
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform .3s;
+}
+.phase-item.open .phase-chevron { transform: rotate(180deg); color: var(--red); }
+
+.phase-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .45s cubic-bezier(.4,0,.2,1);
+}
+.phase-item.open .phase-body { max-height: 1000px; }
+
+.phase-inner {
+  padding: 0 24px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 20px;
+}
+.inner-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 10px;
+  display: block;
+}
+.items-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.item-row { display: flex; gap: 10px; font-size: 13px; color: var(--text2); line-height: 1.6; align-items: flex-start; }
+.item-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+.result-box {
+  background: linear-gradient(135deg, rgba(192,21,15,.05), rgba(192,21,15,.02));
+  border: 1px solid rgba(192,21,15,.15);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px; color: var(--text2); line-height: 1.65;
+}
+.hr { height: 1px; background: rgba(0,0,0,.06); margin: 16px 0; }
+
+/* ─── BRANDS SECTION ─── */
+#brands {
+  padding: 100px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+}
+.brand-card {
+  background: var(--white);
+  border: 1.5px solid rgba(0,0,0,.07);
+  border-radius: 16px;
+  padding: 28px 20px;
+  transition: border-color .25s, transform .25s, box-shadow .25s;
+}
+.brand-card:hover {
+  border-color: var(--red);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(192,21,15,.1);
+}
+.brand-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--red);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+  font-size: 20px;
+}
+.brand-name { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.brand-desc { font-size: 12px; color: var(--text3); }
+.member-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--red);
+  display: block;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+/* ─── STRATEGY SUMMARY ─── */
+#strategy {
+  background: var(--gray);
+  padding: 100px 24px;
+}
+.strategy-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.strategy-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+}
+.sf-tag {
+  background: var(--white);
+  border: 1.5px solid rgba(192,21,15,.2);
+  color: var(--red);
+  font-size: 13px; font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 50px;
+}
+.sf-arrow { color: var(--text3); font-size: 18px; }
+
+/* ─── CTA ─── */
+#cta {
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.cta-title {
+  font-size: clamp(32px, 6vw, 60px);
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: -.03em;
+  line-height: 1.15;
+  margin-bottom: 24px;
+}
+.cta-title span { color: var(--red); }
+.cta-sub { font-size: 16px; color: var(--text2); margin-bottom: 48px; line-height: 1.8; }
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  position: relative;
+  z-index: 1;
+  letter-spacing: .02em;
+}
+.cta-btn:hover {
+  background: var(--red-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(192,21,15,.35);
+}
+
+/* explosion overlay */
+#explosion {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
+}
+.exp-word {
+  position: absolute;
+  font-family: 'Vazirmatn', sans-serif;
+  font-weight: 900;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 12px;
+  letter-spacing: .05em;
+}
+footer strong { color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+  <p class="hero-eyebrow">Branding Roadmap 2026</p>
+  <h1 class="hero-logo">NBD<br>Group</h1>
+  <p class="hero-tagline">استراتژی ساخت یک اکوسیستم غذایی ماندگار<br>از هویت تا هم‌افزایی</p>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>اسکرول کنید</span>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">NBD Group</span>
+  <ul class="nav-links">
+    <li><a href="#roadmap">روادمپ</a></li>
+    <li><a href="#brands">برندها</a></li>
+    <li><a href="#strategy">استراتژی</a></li>
+    <li><a href="#cta">همکاری</a></li>
+  </ul>
+</nav>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-label reveal">چرا این رویکرد؟</div>
+  <h2 class="intro-title reveal">ترتیب درست،<br><span>همه چیز را تغییر می‌دهد</span></h2>
+  <p class="intro-body reveal">اگر قبل از ساخت هویت و جایگاه، کمپین اجرا شود — احتمالاً فقط هزینه می‌شود و اثر ماندگاری ایجاد نمی‌کند. این Roadmap برای NBD Group طراحی شده تا مطمئن شویم هر قدم، پایه قدم بعدی را می‌سازد.</p>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-header reveal">
+    <span class="section-label">۵ فاز · ۵ ماه</span>
+    <h2 class="section-title">Roadmap برندینگ NBD Group</h2>
+  </div>
+
+  <div class="timeline-wrap">
+
+    <!-- Phase 1+2 -->
+    <div class="phase-item reveal" id="ph1">
+      <div class="phase-dot" onclick="togglePhase('ph1')">۱+۲</div>
+      <div class="phase-card" onclick="togglePhase('ph1')">
+        <div class="phase-head">
+          <div>
+            <span class="phase-tag">Brand Foundation + Integration</span>
+            <div class="phase-title">تعریف برند و یکپارچه‌سازی نقاط تماس</div>
+            <div class="phase-time">⏱ ۱.۵ الی ۲ ماه</div>
+            <div class="phase-goal">مشخص شدن هویت، جایگاه و شخصیت NBD + حضور در تمام نقاطی که مشتری با برندها در ارتباط است.</div>
+          </div>
+          <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="phase-body">
+          <div class="phase-inner">
+            <span class="inner-label">خروجی‌های اصلی</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>تعریف مأموریت، چشم‌انداز و ارزش‌های برند (کیفیت، احترام به مشتری، تجربه خوب)</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>طراحی هویت بصری کامل — لوگو، رنگ، تایپوگرافی</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>تعیین شعار و پیام اصلی برند</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>تعریف معماری برند: Naple، Burgerz، Donerz و Salad Bar</span></div>
+            </div>
+            <div class="hr"></div>
+            <span class="inner-label">یکپارچه‌سازی نقاط تماس</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>درج «Member of NBD Group» روی تمام برندها</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>بسته‌بندی‌ها، منوها و تابلوهای داخل شعب</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>رسیدها، وب‌سایت و شبکه‌های اجتماعی برندها</span></div>
+            </div>
+            <div class="result-box">🎯 مشتری بدون نیاز به تبلیغات، به مرور متوجه ارتباط برندها می‌شود.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-item reveal" id="ph3">
+      <div class="phase-dot" onclick="togglePhase('ph3')">۳</div>
+      <div class="phase-card" onclick="togglePhase('ph3')">
+        <div class="phase-head">
+          <div>
+            <span class="phase-tag">Brand Launch</span>
+            <div class="phase-title">معرفی رسمی NBD</div>
+            <div class="phase-time">⏱ ۱ ماه</div>
+            <div class="phase-goal">معرفی NBD به عنوان خانواده برندهای غذایی به مخاطبان.</div>
+          </div>
+          <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="phase-body">
+          <div class="phase-inner">
+            <span class="inner-label">اقدامات</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>کمپین معرفی در شبکه‌های اجتماعی</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>تولید ویدئوی معرفی NBD</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>روایت داستان شکل‌گیری مجموعه</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>نمایش ارتباط برندها با یکدیگر</span></div>
+            </div>
+            <div class="result-box">💬 پیام اصلی: «برندهایی که می‌شناسید، حالا با یک هویت مشترک.»</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-item reveal" id="ph4">
+      <div class="phase-dot" onclick="togglePhase('ph4')">۴</div>
+      <div class="phase-card" onclick="togglePhase('ph4')">
+        <div class="phase-head">
+          <div>
+            <span class="phase-tag">Brand Building</span>
+            <div class="phase-title">ساخت اعتبار برند</div>
+            <div class="phase-time">⏱ ۱ الی ۲ ماه</div>
+            <div class="phase-goal">ساختن شخصیت و اعتبار برای NBD، فراتر از یک نام سازمانی.</div>
+          </div>
+          <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="phase-body">
+          <div class="phase-inner">
+            <span class="inner-label">محورهای محتوا</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>استانداردهای کیفیت و فرهنگ سازمانی</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>پشت صحنه تولید و معرفی تیم</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>تجربه مشتری و توسعه شعب</span></div>
+            </div>
+            <div class="result-box">🎯 NBD به نماد کیفیت و تجربه خوب شناخته شود، نه صرفاً یک نام سازمانی.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase-item reveal" id="ph5">
+      <div class="phase-dot" onclick="togglePhase('ph5')">۵</div>
+      <div class="phase-card" onclick="togglePhase('ph5')">
+        <div class="phase-head">
+          <div>
+            <span class="phase-tag">Brand Synergy</span>
+            <div class="phase-title">هم‌افزایی برندها</div>
+            <div class="phase-time">⏱ از ماه ۴ یا ۵ به بعد</div>
+            <div class="phase-goal">ایجاد ارتباط بیشتر بین برندها و افزایش ارزش کل مجموعه.</div>
+          </div>
+          <svg class="phase-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="phase-body">
+          <div class="phase-inner">
+            <span class="inner-label">اقدامات</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>کمپین‌های مشترک بین برندها</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>باشگاه مشتریان مشترک و پیشنهادهای ویژه</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>معرفی شعب جدید تحت هویت NBD</span></div>
+            </div>
+            <div class="hr"></div>
+            <span class="inner-label">مثال‌ها</span>
+            <div class="items-list">
+              <div class="item-row"><span class="item-dot"></span><span>پاسپورت NBD Group</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>فستیوال غذا</span></div>
+              <div class="item-row"><span class="item-dot"></span><span>KOL Seeding</span></div>
+            </div>
+            <div class="result-box">🎯 مشتری با شناخت یک برند، به سایر برندها اعتماد کند — NBD اکوسیستم غذایی شناخته شود.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="section-header reveal">
+    <span class="section-label">اعضای خانواده</span>
+    <h2 class="section-title">برندهای زیرمجموعه NBD</h2>
+  </div>
+  <div class="brands-grid">
+    <div class="brand-card reveal">
+      <div class="brand-icon">🍕</div>
+      <div class="brand-name">Naple</div>
+      <div class="brand-desc">پیتزای ایتالیایی اصیل</div>
+      <span class="member-tag">Member of NBD Group</span>
+    </div>
+    <div class="brand-card reveal">
+      <div class="brand-icon">🍔</div>
+      <div class="brand-name">Burgerz</div>
+      <div class="brand-desc">برگر تازه و خاص</div>
+      <span class="member-tag">Member of NBD Group</span>
+    </div>
+    <div class="brand-card reveal">
+      <div class="brand-icon">🌯</div>
+      <div class="brand-name">Donerz</div>
+      <div class="brand-desc">دونر کباب اصیل</div>
+      <span class="member-tag">Member of NBD Group</span>
+    </div>
+    <div class="brand-card reveal">
+      <div class="brand-icon">🥗</div>
+      <div class="brand-name">Salad Bar</div>
+      <div class="brand-desc">سالاد تازه و سالم</div>
+      <span class="member-tag">Member of NBD Group</span>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section id="strategy">
+  <div class="strategy-inner">
+    <div class="section-header reveal">
+      <span class="section-label">خلاصه استراتژی</span>
+      <h2 class="section-title">منطق پشت هر قدم</h2>
+    </div>
+    <div class="strategy-flow reveal">
+      <span class="sf-tag">تعریف هویت</span>
+      <span class="sf-arrow">←</span>
+      <span class="sf-tag">یکپارچه‌سازی</span>
+      <span class="sf-arrow">←</span>
+      <span class="sf-tag">معرفی رسمی</span>
+      <span class="sf-arrow">←</span>
+      <span class="sf-tag">اعتبارسازی</span>
+      <span class="sf-arrow">←</span>
+      <span class="sf-tag">هم‌افزایی</span>
+    </div>
+    <p style="text-align:center; font-size:15px; color:var(--text2); line-height:1.9; margin-top:40px; max-width:580px; margin-right:auto; margin-left:auto;" class="reveal">ابتدا NBD را تعریف، سپس در تمام نقاط تماس قابل مشاهده می‌کنیم، بعد آن را معرفی می‌کنیم، برایش اعتبار می‌سازیم و در نهایت از این اعتبار برای رشد همه برندهای زیرمجموعه استفاده می‌کنیم.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-title reveal">آماده‌اید<br><span>شروع کنیم؟</span></h2>
+  <p class="cta-sub reveal">این Roadmap، اولین قدم از یک مسیر بزرگ است.<br>NBD Group لایق یک هویت واقعی و ماندگار است.</p>
+  <button class="cta-btn reveal" onclick="explode()">
+    <span>شروع همکاری</span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </button>
+</section>
+
+<!-- EXPLOSION OVERLAY -->
+<div id="explosion"></div>
+
+<footer>
+  <strong>NBD Group</strong> &nbsp;·&nbsp; Branding Roadmap &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; 2026
+</footer>
+
+<script>
+// particles
+(function(){
+  const hero = document.getElementById('hero');
+  for(let i=0;i<22;i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${2+Math.random()*5}px;
+      height:${2+Math.random()*5}px;
+      animation-duration:${6+Math.random()*10}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    hero.appendChild(p);
+  }
+})();
+
+// scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); }
+  });
+},{threshold:0.12});
+reveals.forEach(r=>obs.observe(r));
+
+// parallax on hero
+window.addEventListener('scroll',()=>{
+  const s = window.scrollY;
+  const logo = document.querySelector('.hero-logo');
+  const tagline = document.querySelector('.hero-tagline');
+  if(logo){ logo.style.transform = `translateY(${s*0.35}px)`; logo.style.opacity = 1 - s/500; }
+  if(tagline){ tagline.style.transform = `translateY(${s*0.2}px)`; }
+});
+
+// toggle phases
+function togglePhase(id){
+  const item = document.getElementById(id);
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.phase-item').forEach(el=>el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// EXPLOSION
+const words = [
+  'همکاری','خلاقیت','برندینگ','موفقیت','اعتبار','هویت','رشد','کیفیت',
+  'اعتماد','تجربه','ارزش','چشم‌انداز','مأموریت','هم‌افزایی','Leadership',
+  'NBD','Branding','Strategy','Growth','Excellence','Vision','Impact',
+  '🚀','🔥','⭐','💡','🎯','✨','🏆'
+];
+
+const colors = ['#C0150F','#E8201A','#ff4d4d','#ff8080','#ffffff','#8B0D09','#ff6666'];
+
+function explode(){
+  const container = document.getElementById('explosion');
+  container.style.display = 'block';
+  container.innerHTML = '';
+
+  const count = 55;
+  for(let i=0;i<count;i++){
+    const word = document.createElement('div');
+    word.className = 'exp-word';
+    word.textContent = words[Math.floor(Math.random()*words.length)];
+    const size = 14 + Math.random()*28;
+    word.style.cssText = `
+      font-size:${size}px;
+      color:${colors[Math.floor(Math.random()*colors.length)]};
+      top:${10+Math.random()*80}%;
+      left:${5+Math.random()*90}%;
+      font-weight:${Math.random()>.5?900:700};
+      text-shadow: 0 0 20px rgba(192,21,15,.4);
+    `;
+    container.appendChild(word);
+
+    const delay = i * 45;
+    const dur = 1800 + Math.random() * 1000;
+    const tx = (Math.random()-0.5)*300;
+    const ty = -(80 + Math.random()*200);
+
+    word.animate([
+      { opacity:0, transform:`translate(-50%,-50%) scale(.3) rotate(${Math.random()*40-20}deg)` },
+      { opacity:1, transform:`translate(calc(-50% + ${tx*0.3}px), calc(-50% + ${ty*0.3}px)) scale(1.15) rotate(${Math.random()*20-10}deg)`, offset: 0.25 },
+      { opacity:1, transform:`translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1) rotate(${Math.random()*30-15}deg)`, offset: 0.7 },
+      { opacity:0, transform:`translate(calc(-50% + ${tx}px), calc(-50% + ${ty+60}px)) scale(.8)` }
+    ],{
+      duration: dur,
+      delay: delay,
+      easing: 'cubic-bezier(.2,.8,.3,1)',
+      fill: 'both'
+    });
+  }
+
+  setTimeout(()=>{
+    container.innerHTML = '';
+    container.style.display = 'none';
+  }, 4500);
+}
+</script>
+</body>
+</html>
